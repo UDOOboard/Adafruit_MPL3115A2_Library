@@ -18,6 +18,7 @@
     v1.0 - First release
 */
 /**************************************************************************/
+
 #if ARDUINO >= 100
  #include "Arduino.h"
 #else
@@ -113,6 +114,7 @@ float Adafruit_MPL3115A2::getAltitude() {
     sta = read8(MPL3115A2_REGISTER_STATUS);
     delay(10);
   }
+
   Wire.beginTransmission(MPL3115A2_ADDRESS); // start transmission to device 
   Wire.write(MPL3115A2_REGISTER_PRESSURE_MSB); 
   Wire.endTransmission(false); // end transmission
@@ -180,5 +182,6 @@ void Adafruit_MPL3115A2::write8(uint8_t a, uint8_t d) {
   Wire.beginTransmission(MPL3115A2_ADDRESS); // start transmission to device 
   Wire.write(a); // sends register address to write to
   Wire.write(d); // sends register data
-  Wire.endTransmission(false); // end transmission
+  Wire.endTransmission(); // end transmission
 }
+
